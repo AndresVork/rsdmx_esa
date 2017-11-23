@@ -1,4 +1,4 @@
-#Teen funktsiooni
+#Function to download data from Statistics Estonia database. Needs the acronym of the table name as an input.
 rsdmx_esa <-  function(mytable) {
   require(rsdmx)
   require(dplyr)
