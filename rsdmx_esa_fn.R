@@ -23,6 +23,7 @@ rsdmx_esa <-  function(mytable) {
 
 #Example
 # df <- rsdmx_esa("LE211")
+# require(ggplot2)                       
 # df %>% filter(DIM2label.et=="Osatähtsus (kulutused kokku = 100), %", DIM3label.et=="Tervishoid") %>%
 #   ggplot(aes(x=as.numeric(obsTime), y=obsValue, color=DIM4label.et)) +
 #   geom_line() +
