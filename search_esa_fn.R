@@ -25,8 +25,10 @@ search_esa_fn <- function(keyword, lang="et", ignore.case=TRUE ) {
   datasets[(grepl(keyword, datasets[,2], ignore.case = ignore.case)),]
   }
 
-#Näide
-search_esa_fn("tualett", "et", TRUE)
-search_esa_fn("research", "en", FALSE)
-
-df <- rsdmx_esa("LET48")
+#Näide / Example
+# 
+# search_esa_fn("tualett")
+# search_esa_fn("tualett", "et", TRUE)
+# search_esa_fn("research", "en", FALSE)
+#And then use  rsdmx_esa to download the table
+# df <- rsdmx_esa("LET48")
