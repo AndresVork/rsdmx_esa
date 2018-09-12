@@ -13,7 +13,7 @@ rsdmx_esa <-  function(mytable) {
   for(i in labelnames) {
     assign(substr(i,nchar(paste0("CL_", mytable, "_"))+1, nchar(i)), as.data.frame(slot(dfstruct, "codelists"), codelistId = i))
   }
-  for(i in grep("DIM", names(df), value=TRUE)) {
+  for(i in setdiff(names(df), c("obsTime", "obsValue"))) {
     df <- merge(df, get(i), by.x=i, by.y = "id" )
     names(df)[names(df) == 'label.en'] <- paste0(i,'label.en')
     names(df)[names(df) == 'label.et'] <- paste0(i,'label.et')
