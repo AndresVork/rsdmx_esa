@@ -11,7 +11,9 @@ rsdmx_esa <-  function(mytable) {
   labellist <- slot(dfstruct, "codelists")
   labelnames <- sapply(slot(labellist, "codelists"), function(x) slot(x, "id"))
   for(i in labelnames) {
-    assign(substr(i,nchar(paste0("CL_", mytable, "_"))+1, nchar(i)), as.data.frame(slot(dfstruct, "codelists"), codelistId = i))
+    assign(substr(i,nchar(paste0("CL_", mytable, "_"))+1, nchar(i)), 
+           as.data.frame(slot(dfstruct, "codelists"), codelistId = i) %>% 
+             dplyr::select(id, starts_with("label")))
   }
   for(i in setdiff(names(df), c("obsTime", "obsValue"))) {
     df <- merge(df, get(i), by.x=i, by.y = "id" )
