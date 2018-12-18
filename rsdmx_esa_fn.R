@@ -11,7 +11,7 @@ rsdmx_esa <-  function(mytable) {
   labellist <- slot(dfstruct, "codelists")
   labelnames <- sapply(slot(labellist, "codelists"), function(x) slot(x, "id"))
   
-  for(i in setdiff(labelnames, paste0("CL_", mytable, "__OBS_STATUS"))) {
+  for(i in setdiff(labelnames, paste0("CL_", mytable, "_OBS_STATUS"))) {
     assign(substr(i,nchar(paste0("CL_", mytable, "_"))+1, nchar(i)), 
            as.data.frame(slot(dfstruct, "codelists"), codelistId = i) %>% 
              dplyr::select(id, starts_with("label")))
