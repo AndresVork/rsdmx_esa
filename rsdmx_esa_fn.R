@@ -10,11 +10,13 @@ rsdmx_esa <-  function(mytable) {
   varnames$Name.et <- iconv(varnames$Name.et, "UTF-8")
   labellist <- slot(dfstruct, "codelists")
   labelnames <- sapply(slot(labellist, "codelists"), function(x) slot(x, "id"))
-  for(i in labelnames) {
+  
+  for(i in setdiff(labelnames, paste0("CL_", mytable, "__OBS_STATUS"))) {
     assign(substr(i,nchar(paste0("CL_", mytable, "_"))+1, nchar(i)), 
            as.data.frame(slot(dfstruct, "codelists"), codelistId = i) %>% 
              dplyr::select(id, starts_with("label")))
   }
+  
   for(i in setdiff(names(df), c("obsTime", "obsValue"))) {
     df <- merge(df, get(i), by.x=i, by.y = "id" )
     names(df)[names(df) == 'label.en'] <- paste0(i,'label.en')
