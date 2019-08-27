@@ -32,3 +32,6 @@ search_esa <- function(keyword, lang="et", ignore.case=TRUE ) {
 # search_esa("research", "en", FALSE)
 #And then use  rsdmx_esa to download the table
 # df <- rsdmx_esa("LET48")
+
+#Kahe märksõnaga otsingu jaoks peab esimese otsingu tulemusest otsima järgmist märksõna
+# search_esa("töötus") %>%  filter(grepl("maakonna", Selgitus))
